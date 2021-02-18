@@ -103,6 +103,7 @@ function BullsAndCows() {
   }
 
   function guess(text) {
+    console.log(state)
     let check = passesChecks(text);
     if (check.value){
       console.log("Got a guess:" + text)
