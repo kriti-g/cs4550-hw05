@@ -63,6 +63,7 @@ function Controls({guess, reset}) {
   function keyPress(ev) {
     if (ev.key === "Enter") {
       guess(text);
+      setText('');
     }
   }
 
