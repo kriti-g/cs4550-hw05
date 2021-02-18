@@ -50,7 +50,6 @@ function GuessTable(props) {
       </tbody>
     );
   }
-}
 
 function Controls({guess, reset}) {
   const [text, setText] = useState("");
