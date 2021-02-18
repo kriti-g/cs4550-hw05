@@ -35,9 +35,17 @@ defmodule Bulls.Game do
     cows = 0
     bulls = 0
     guess_array = String.graphemes(guess)
-    find_bc_loop(number, guess_array, cows, bulls)
+    function = fn(x, [b, c, ind]) ->
+      cond do
+        x == String.at(number, ind) -> [b+1, c, ind+1]
+        String.contains?(number, x) -> [b, c+1, ind+1]
+        true -> [b, c, ind+1]
+      end
+    end
+    Enum.reduce(guess_array, [0,0,0], function)
   end
 
+  def check_bc([bulls, cows], guess)
 
   def find_bc_loop(number, guess, bulls, cows) do
     if guess == [] do
