@@ -58,9 +58,8 @@ socket.connect();
 let channel = socket.channel("game:1", {});
 
 let state = {
-  number: "0000",
+  secret_revealed: "",
   guesses: [],
-  text: ""
 };
 
 let callback = null;

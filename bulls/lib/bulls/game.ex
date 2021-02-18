@@ -3,12 +3,31 @@ defmodule Bulls.Game do
   def new do
     %{
       number: random_number(),
-      guesses: [],
-      text: ""
+      guesses: []
     }
   end
 
+  def guess(st, num) do
+    [bulls, cows] = find_bc_loop(st.number, String.graphemes(num), 0, 0)
+    new_guess = %{
+      value: num,
+      bulls: bulls,
+      cows: cows
+    }
+    %{ st | guesses: st.guesses ++ [new_guess]}
+  end
 
+  def find_bc_loop(number, guess, bulls, cows) do
+    if guess == [] do
+      [bulls, cows]
+    else
+      cond do
+        hd guess == String.at(number, 4-length(guess)) -> bulls = bulls + 1
+        String.contains?(number, hd guess) -> cows = cows + 1
+      end
+      find_bc_loop(number, tl guess, bulls, cows)
+    end
+  end
 
   def random_number() do
     num_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]

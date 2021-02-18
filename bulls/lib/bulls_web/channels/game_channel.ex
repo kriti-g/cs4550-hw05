@@ -12,8 +12,8 @@ defmodule BullsWeb.GameChannel do
       |> assign(:name, name)
       |> assign(:game, game)
       BackupAgent.put(name, game)
-      view = Game.view(game)
-      {:ok, view, socket}
+      get_state = Game.get_state(game)
+      {:ok, get_state, socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
@@ -25,16 +25,16 @@ defmodule BullsWeb.GameChannel do
     game1 = Game.guess(game0, num)
     socket1 = assign(socket0, :game, game1)
     BackupAgent.put(socket0.assigns[:name], game1)
-    view = Game.view(game1)
-    {:reply, {:ok, view}, socket1}
+    get_state = Game.get_state(game1)
+    {:reply, {:ok, get_state}, socket1}
   end
 
   @impl true
   def handle_in("reset", _, socket) do
     game = Game.new
     socket = assign(socket, :game, game)
-    view = Game.view(game)
-    {:reply, {:ok, view}, socket}
+    get_state = Game.get_state(game)
+    {:reply, {:ok, get_state}, socket}
   end
 
   # Add authorization logic here as required.
