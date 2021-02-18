@@ -58,7 +58,6 @@ socket.connect();
 let channel = socket.channel("game:1", {});
 
 let state = {
-  win: false,
   guesses: [],
 };
 
