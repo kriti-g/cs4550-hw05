@@ -147,11 +147,13 @@ function BullsAndCows() {
   </div>);
 
   if (state.secret_revealed != "") {
-    body = (
-      <Victory number={state.secret_revealed} onClick={resetGame}/>);
-  } else if (state.guesses.length > 7) {
-    body = (
+    if (state.guesses[state.guesses.length - 1].bulls == 4) {
+      body = (
+        <Victory number={state.secret_revealed} onClick={resetGame}/>);
+    } else if (state.guesses.length > 7) {
+      body = (
       <GameOver number={state.secret_revealed} onClick={resetGame}/>);
+    }
   }
 
   return (

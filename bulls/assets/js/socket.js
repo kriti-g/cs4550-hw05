@@ -66,9 +66,8 @@ let callback = null;
 
 // The server sent us a new state.
 function state_update(st) {
-  console.log("New state", st);
   state = st;
-  console.log("New state 2", state);
+  console.log("New state", state);
   if (callback) {
     callback(st);
   }
