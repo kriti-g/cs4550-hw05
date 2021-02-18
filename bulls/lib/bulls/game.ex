@@ -8,12 +8,12 @@ defmodule Bulls.Game do
   end
 
   def guess(st, num) do
-    [bulls, cows] = find_bc_loop(st.number, String.graphemes(num), [], [])
+    [b, c] = find_bc_loop(st.number, String.graphemes(num), [], [])
     new_guess = %{
       key: length(st.guesses),
       value: num,
-      bulls: bulls,
-      cows: cows
+      bulls: b,
+      cows: c
     }
     %{ st | guesses: st.guesses ++ [new_guess]}
   end
