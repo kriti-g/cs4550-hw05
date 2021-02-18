@@ -94,6 +94,9 @@ function BullsAndCows() {
     secret_revealed: "",
     guesses: [],
   })
+  if(state==null){
+    return;
+  }
 
   useEffect(() => {
     ch_join(setState);
