@@ -124,7 +124,7 @@ function BullsAndCows() {
         <th>Result</th>
       </tr>
     </thead>
-      <GuessTable guesses={guesses}/>
+      <GuessTable guesses={state.guesses}/>
   </table>
   </div>
   <div class="col-sm-4">
@@ -146,7 +146,7 @@ function BullsAndCows() {
   if (secret_revealed != "") {
     body = (
       <Victory number={secret_revealed} onClick={resetGame}/>);
-  } else if (guesses.length > 7) {
+  } else if (state.guesses.length > 7) {
     body = (
       <GameOver number={secret_revealed} onClick={resetGame}/>);
   }
