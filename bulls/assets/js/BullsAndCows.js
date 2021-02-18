@@ -39,10 +39,6 @@ function Victory(props) {
 }
 
 function GuessTable(props) {
-  if (!props.state){
-    console.log(props.state)
-    return (<tbody></tbody>);
-  }else {
     return (
       <tbody>
       {props.state.guesses.map(guess => (
