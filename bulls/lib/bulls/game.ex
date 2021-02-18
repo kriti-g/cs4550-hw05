@@ -22,12 +22,12 @@ defmodule Bulls.Game do
     if st.guesses != [] do
       if List.last(st.guesses).bulls == 4 || length(st.guesses) > 7 do
         %{
-          win: true
+          win: true,
           guesses: st.guesses
         }
       else
         %{
-          win: false
+          win: false,
           guesses: st.guesses
         }
       end
