@@ -45,8 +45,6 @@ defmodule Bulls.Game do
     Enum.reduce(guess_array, [0,0,0], function)
   end
 
-  def check_bc([bulls, cows], guess)
-
   def find_bc_loop(number, guess, bulls, cows) do
     if guess == [] do
       [bulls, cows]
