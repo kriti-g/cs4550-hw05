@@ -28,13 +28,16 @@ module.exports = (env, options) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.jsx?$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
-	    options: {
-		presets: ['@babel/preset-env', '@babel/preset-react']
-	    }
+            options: {
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-react'
+              ],
+            },
           }
         },
         {
