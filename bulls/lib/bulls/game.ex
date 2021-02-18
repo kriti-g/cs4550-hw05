@@ -19,16 +19,15 @@ defmodule Bulls.Game do
   end
 
   def get_state(st) do
-    revealed = ""
     if st.guesses != [] do
       if List.last(st.guesses).bulls == 4 || length(st.guesses) > 7 do
         %{
-          secret_revealed: st.number,
+          win: true
           guesses: st.guesses
         }
       else
         %{
-          secret_revealed: "",
+          win: false
           guesses: st.guesses
         }
       end
@@ -37,8 +36,6 @@ defmodule Bulls.Game do
   end
 
   def find_bc(number, guess) do
-    cows = 0
-    bulls = 0
     guess_array = String.graphemes(guess)
     function = fn(x, [b, c, ind]) ->
       cond do

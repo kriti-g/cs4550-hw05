@@ -12,7 +12,6 @@ function GameOver(props) {
     <div class="col-sm-6">
     <h1>Game Over!</h1>
     <br/>
-    <p>The number was {props.number}.</p>
     <p>Play again?</p>
     <button class="btn btn-success" onClick={props.onClick} type="button">
     Reset
@@ -28,7 +27,6 @@ function Victory(props) {
     <div class="col-sm-6">
     <h1>You won!</h1>
     <br/>
-    <p>The number was {props.number}.</p>
     <p>Play again?</p>
     <button class="btn btn-success" onClick={props.onClick} type="button">
     Reset
@@ -93,7 +91,7 @@ function Controls({guess, reset}) {
 
 function BullsAndCows() {
   const [state, setState] = useState({
-    secret_revealed: "",
+    win: false,
     guesses: [],
   })
 
@@ -149,17 +147,16 @@ function BullsAndCows() {
     </div>);
 
     if (state){
-      if (state.secret_revealed != "") {
-        if (state.guesses[state.guesses.length - 1].bulls == 4) {
+      if (state.win) {
           body = (
-            <Victory number={state.secret_revealed} onClick={resetGame}/>);
-          } else if (state.guesses.length > 7) {
-            body = (
-              <GameOver number={state.secret_revealed} onClick={resetGame}/>
-            );
-          }
-        }
+            <Victory  onClick={resetGame}/>);
+      } else if (state.guesses.length > 7) {
+          body = (
+            <GameOver onClick={resetGame}/>
+          );
       }
+    }
+
 
       return (
         <div class="container p-3 my-3">
