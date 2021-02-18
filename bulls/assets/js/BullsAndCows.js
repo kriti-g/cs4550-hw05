@@ -39,7 +39,7 @@ function Victory(props) {
 }
 
 function GuessTable(props) {
-  if (props.state == null){
+  if (!props.state){
     console.log(props.state)
     return (<tbody></tbody>);
   }else {
