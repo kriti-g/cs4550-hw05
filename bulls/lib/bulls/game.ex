@@ -14,7 +14,7 @@ defmodule Bulls.Game do
       value: num,
       bulls: bulls,
       cows: cows
-    }hd
+    }
     %{ st | guesses: st.guesses ++ [new_guess]}
   end
 
