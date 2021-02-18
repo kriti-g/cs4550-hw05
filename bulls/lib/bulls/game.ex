@@ -8,7 +8,7 @@ defmodule Bulls.Game do
   end
 
   def guess(st, num) do
-    [b, c] = find_bc(st.number, num)
+    [b, c, ind] = find_bc(st.number, num)
     new_guess = %{
       key: length(st.guesses),
       value: num,
