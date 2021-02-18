@@ -40,6 +40,7 @@ function Victory(props) {
 
 function GuessTable(props) {
   if (props.state == null){
+    console.log(props.state)
     return (<tbody></tbody>);
   }else {
     return (
