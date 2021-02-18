@@ -38,6 +38,7 @@ defmodule Bulls.Game do
       cond do
         (hd guess) == String.at(number, 4-length(guess)) -> bulls = bulls + 1
         String.contains?(number, (hd guess)) -> cows = cows + 1
+        _ -> cows = cows
       end
       find_bc_loop(number, (tl guess), bulls, cows)
     end
