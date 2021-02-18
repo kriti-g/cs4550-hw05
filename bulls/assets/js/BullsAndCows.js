@@ -63,7 +63,7 @@ function Controls({guess, reset}) {
   function keyPress(ev) {
     if (ev.key === "Enter") {
       guess(text);
-      setText('');
+      setText('')
     }
   }
 
@@ -117,6 +117,12 @@ function BullsAndCows() {
     }
   }
 
+  if (state) {
+    table = (<GuessTable guesses={state.guesses}/>);
+  } else {
+    table = (<tbody></tbody>);
+  }
+
   let body = (
     <div class="row">
     <div class="col-sm-8">
@@ -129,7 +135,7 @@ function BullsAndCows() {
     <th>Result</th>
     </tr>
     </thead>
-    <GuessTable guesses={state.guesses}/>
+    {table}
     </table>
     </div>
     <div class="col-sm-4">
