@@ -14,7 +14,7 @@ defmodule Bulls.Game do
       value: num,
       bulls: bulls,
       cows: cows
-    }
+    }hd
     %{ st | guesses: st.guesses ++ [new_guess]}
   end
 
@@ -36,10 +36,21 @@ defmodule Bulls.Game do
       [bulls, cows]
     else
       cond do
-        (hd guess) == String.at(number, 4-length(guess)) -> bulls = bulls + 1
-        String.contains?(number, (hd guess)) -> cows = cows + 1
-        true -> cows = cows
+        (hd guess) == String.at(number, 4-length(guess)) ->
+          bulls = bulls + 1;
+        String.contains?(number, (hd guess)) ->
+          cows = cows + 1;
+        true ->
+          cows = cows;
       end
+      IO.inspect("cows")
+      IO.inspect(cows)
+      IO.inspect("bulls")
+      IO.inspect(bulls)
+      IO.inspect("guess")
+      IO.inspect(guess)
+      IO.inspect("number")
+      IO.inspect(number)
       find_bc_loop(number, (tl guess), bulls, cows)
     end
   end
