@@ -115,11 +115,6 @@ function BullsAndCows() {
       Toastr.error(check.message);
     }
   }
-  if (state) {
-    let table = (<GuessTable guesses={state.guesses}/>);
-  } else {
-    let table = (<tbody></tbody>);
-  }
 
   let body = (
     <div class="row">
