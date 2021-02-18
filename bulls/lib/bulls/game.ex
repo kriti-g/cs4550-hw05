@@ -22,13 +22,18 @@ defmodule Bulls.Game do
     revealed = ""
     if st.guesses != [] do
       if List.last(st.guesses).bulls == 4 do
-        revealed = st.number
+        %{
+          secret_revealed: st.number,
+          guesses: st.guesses
+        }
+      else
+        %{
+          secret_revealed: "",
+          guesses: st.guesses
+        }
       end
     end
-    %{
-      secret_revealed: revealed,
-      guesses: st.guesses
-    }
+
   end
 
   def find_bc(number, guess) do
@@ -43,42 +48,6 @@ defmodule Bulls.Game do
       end
     end
     Enum.reduce(guess_array, [0,0,0], function)
-  end
-
-  def find_bc_loop(number, guess, bulls, cows) do
-    if guess == [] do
-      [bulls, cows]
-    else
-      cond do
-        (hd guess) == String.at(number, 4-length(guess)) ->
-          bulls = 1 + bulls;
-          IO.inspect("cond 1")
-          IO.inspect(cows, label: "cows")
-          IO.inspect(bulls, label: "bulls")
-          IO.inspect(guess, label: "guess")
-          IO.inspect(number, label: "number")
-        String.contains?(number, (hd guess)) ->
-          cows = 1 + cows;
-          IO.inspect("cond 2")
-          IO.inspect(cows, label: "cows")
-          IO.inspect(bulls, label: "bulls")
-          IO.inspect(guess, label: "guess")
-          IO.inspect(number, label: "number")
-        true ->
-          cows = cows;
-          IO.inspect("cond 3")
-          IO.inspect(cows, label: "cows")
-          IO.inspect(bulls, label: "bulls")
-          IO.inspect(guess, label: "guess")
-          IO.inspect(number, label: "number")
-      end
-      IO.inspect("end")
-      IO.inspect(cows, label: "cows")
-      IO.inspect(bulls, label: "bulls")
-      IO.inspect(guess, label: "guess")
-      IO.inspect(number, label: "number")
-      find_bc_loop(number, (tl guess), bulls, cows)
-    end
   end
 
   def random_number() do
