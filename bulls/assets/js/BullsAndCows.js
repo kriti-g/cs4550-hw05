@@ -38,7 +38,7 @@ function Victory(props) {
 }
 
 function GuessTable(props) {
-  if (prop.state == null){
+  if (props.state == null){
     return (<tbody></tbody>);
   }else {
     return (
