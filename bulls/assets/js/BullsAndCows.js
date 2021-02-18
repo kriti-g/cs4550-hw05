@@ -11,7 +11,7 @@ function GameOver(props) {
     <div class="row">
     <div class="col-sm-6">
     <h1>Game Over!</h1>
-    <brk/>
+    <br/>
     <p>The number was {props.number}.</p>
     <p>Play again?</p>
     <button class="btn btn-success" onClick={props.onClick} type="button">
