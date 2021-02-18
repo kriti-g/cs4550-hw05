@@ -8,7 +8,7 @@ defmodule Bulls.Game do
   end
 
   def guess(st, num) do
-    [bulls, cows] = find_bc_loop(st.number, String.graphemes(num), 0, 0)
+    [bulls, cows] = find_bc_loop(st.number, String.graphemes(num), [], [])
     new_guess = %{
       key: length(st.guesses),
       value: num,
@@ -33,18 +33,18 @@ defmodule Bulls.Game do
 
   def find_bc_loop(number, guess, bulls, cows) do
     if guess == [] do
-      [bulls, cows]
+      [length(bulls), length(cows)]
     else
       cond do
         (hd guess) == String.at(number, 4-length(guess)) ->
-          bulls = bulls + 1;
+          bulls = [1 | bulls]
           IO.inspect("cond 1")
           IO.inspect(cows, label: "cows")
           IO.inspect(bulls, label: "bulls")
           IO.inspect(guess, label: "guess")
           IO.inspect(number, label: "number")
         String.contains?(number, (hd guess)) ->
-          cows = cows + 1;
+          cows = [1 | cows];
           IO.inspect("cond 2")
           IO.inspect(cows, label: "cows")
           IO.inspect(bulls, label: "bulls")
