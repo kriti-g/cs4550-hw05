@@ -91,7 +91,6 @@ function Controls({guess, reset}) {
 
 function BullsAndCows() {
   const [state, setState] = useState({
-    win: false,
     guesses: [],
   })
 
@@ -147,7 +146,8 @@ function BullsAndCows() {
     </div>);
 
     if (state){
-      if (state.win) {
+      if (state.guesses.length != 0 &&
+        state.guesses[state.guesses.length - 1].bulls === 4) {
           body = (
             <Victory  onClick={resetGame}/>);
       } else if (state.guesses.length > 7) {
