@@ -40,7 +40,7 @@ function Victory(props) {
 function GuessTable(props) {
     return (
       <tbody>
-        {props.guesses.map(guess => (
+        {props.state.guesses.map(guess => (
           <tr id={guess.key}>
             <td>{guess.value}</td>
             <td>{guess.bulls}B{guess.cows}C</td>
@@ -127,7 +127,7 @@ function BullsAndCows() {
         <th>Result</th>
       </tr>
     </thead>
-      <GuessTable guesses={state.guesses}/>
+      <GuessTable guesses={state}/>
   </table>
   </div>
   <div class="col-sm-4">
