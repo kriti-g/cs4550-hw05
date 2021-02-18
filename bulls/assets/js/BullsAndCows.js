@@ -116,7 +116,7 @@ function BullsAndCows() {
   <div class="row">
   <div class="col-sm-8">
   <h1 class="display-4">Bulls and Cows</h1>
-  <Controls reset={reset} guess={guess}/>
+  <Controls reset={resetGame} guess={guess}/>
   <table class="table table-striped">
     <thead class="thead thead-light">
       <tr>
