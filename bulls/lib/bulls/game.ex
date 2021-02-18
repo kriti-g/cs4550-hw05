@@ -10,11 +10,23 @@ defmodule Bulls.Game do
   def guess(st, num) do
     [bulls, cows] = find_bc_loop(st.number, String.graphemes(num), 0, 0)
     new_guess = %{
+      key: length(st.guesses)
       value: num,
       bulls: bulls,
       cows: cows
     }
     %{ st | guesses: st.guesses ++ [new_guess]}
+  end
+
+  def get_state(st) do
+    revealed = ""
+    if last(st.guesses).bulls == 4 do
+      revealed = st.number
+    end
+    %{
+      secret_revealed: revealed,
+      guesses: st.guesses
+    }
   end
 
   def find_bc_loop(number, guess, bulls, cows) do
