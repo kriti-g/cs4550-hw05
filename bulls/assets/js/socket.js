@@ -68,6 +68,7 @@ let callback = null;
 function state_update(st) {
   console.log("New state", st);
   state = st;
+  console.log("New state 2", state);
   if (callback) {
     callback(st);
   }

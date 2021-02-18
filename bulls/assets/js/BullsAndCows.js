@@ -2,8 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as Toastr from 'toastr';
 import 'toastr/build/toastr.min.css';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { passesChecks } from './bullfuncs';
 import { ch_join, ch_push, ch_reset } from './socket';
 
@@ -96,6 +95,9 @@ function BullsAndCows() {
     guesses: [],
   })
 
+  useEffect(() => {
+    ch_join(setState);
+  });
 
   function resetGame(){
     console.log("Time to reset");
