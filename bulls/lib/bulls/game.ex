@@ -38,19 +38,31 @@ defmodule Bulls.Game do
       cond do
         (hd guess) == String.at(number, 4-length(guess)) ->
           bulls = bulls + 1;
+          IO.inspect("cond 1")
+          IO.inspect(cows, label: "cows")
+          IO.inspect(bulls, label: "bulls")
+          IO.inspect(guess, label: "guess")
+          IO.inspect(number, label: "number")
         String.contains?(number, (hd guess)) ->
           cows = cows + 1;
+          IO.inspect("cond 2")
+          IO.inspect(cows, label: "cows")
+          IO.inspect(bulls, label: "bulls")
+          IO.inspect(guess, label: "guess")
+          IO.inspect(number, label: "number")
         true ->
           cows = cows;
+          IO.inspect("cond 3")
+          IO.inspect(cows, label: "cows")
+          IO.inspect(bulls, label: "bulls")
+          IO.inspect(guess, label: "guess")
+          IO.inspect(number, label: "number")
       end
-      IO.inspect("cows")
-      IO.inspect(cows)
-      IO.inspect("bulls")
-      IO.inspect(bulls)
-      IO.inspect("guess")
-      IO.inspect(guess)
-      IO.inspect("number")
-      IO.inspect(number)
+      IO.inspect("end")
+      IO.inspect(cows, label: "cows")
+      IO.inspect(bulls, label: "bulls")
+      IO.inspect(guess, label: "guess")
+      IO.inspect(number, label: "number")
       find_bc_loop(number, (tl guess), bulls, cows)
     end
   end
