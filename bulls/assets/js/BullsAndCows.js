@@ -146,7 +146,8 @@ function BullsAndCows() {
     </div>);
 
     if (state){
-      if (if state.guesses.length != 0 && state.guesses[state.guesses.length - 1].bulls == 4) {
+      if (state.guesses.length != 0 &&
+        state.guesses[state.guesses.length - 1].bulls === 4) {
           body = (
             <Victory  onClick={resetGame}/>);
       } else if (state.guesses.length > 7) {
