@@ -20,7 +20,7 @@ defmodule Bulls.Game do
 
   def get_state(st) do
     revealed = ""
-    if last(st.guesses).bulls == 4 do
+    if List.last(st.guesses).bulls == 4 do
       revealed = st.number
     end
     %{
