@@ -38,6 +38,9 @@ function Victory(props) {
 }
 
 function GuessTable(props) {
+  if (prop.state == null){
+    return (<tbody></tbody>);
+  }else {
     return (
       <tbody>
         {props.state.guesses.map(guess => (
@@ -48,6 +51,7 @@ function GuessTable(props) {
         ))}
       </tbody>
     );
+  }
 }
 
 function Controls({guess, reset}) {
